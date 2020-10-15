@@ -30,7 +30,7 @@ console.log('Socket conectado ID:'+ socket.id);
         socket.player = {
             id: server.lastPlayderID++,
             x: randomInt(5150,5200),
-            y: randomInt(1200,1210),
+            y: randomInt(2084,2085),
             socketID: socket.id//randomInt(100,400)
         };
 

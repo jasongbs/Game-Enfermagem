@@ -49,7 +49,8 @@ Game.preload = function () {
     game.load.image('pranchetaGrande', 'assets/prancheta_grande.png');
     game.load.spritesheet('button', 'assets/button.png');
     game.load.image('espaco', 'assets/espaco.png');
-    game.load.image('corredor', 'assets/salas/corredor.jpg');
+    game.load.image('CV', 'assets/salas/corredorV.jpg');
+    game.load.image('CH', 'assets/salas/corredorH.jpg');
     json();
 
 }
@@ -72,7 +73,7 @@ game.add.sprite(0, 0, 'espaco');
 
     cursors = game.input.keyboard.createCursorKeys();
 
-    for(var sala=0;sala<1;sala++)
+    for(var sala=0;sala<12;sala++)
     DrawSalas(sala);
 }
 
@@ -159,7 +160,7 @@ function DrawCorredores(salaAtual) {
         console.log("Corredor:"+salaAtual)
         corredor = game.add.group();
         corredor.enableBody = true;
-        corredorMapa = corredor.create(salaAtual[0].x, salaAtual[0].y,'corredor');
+        corredorMapa = corredor.create(salaAtual.x, salaAtual.y,salaAtual.type);
         corredorMapa.body.immovable = true;
         
     } catch (e) {
@@ -174,7 +175,8 @@ function DrawSalas(sala) {
         chao.enableBody = true;
         chaoMapa = chao.create(OBJsalas[sala].x, OBJsalas[sala].y, OBJsalas[sala].img);
         chaoMapa.body.immovable = true;
-        DrawCorredores(OBJsalas[sala].corredor)
+        for(var cor in OBJsalas[sala].corredor) 
+        DrawCorredores(OBJsalas[sala].corredor[cor])
     } catch (e) {
         console.log("Acabou as Salas " + e.message);
     }
@@ -194,7 +196,7 @@ function liberaProximaSala(a, b) {
 
 Game.update = function () {
     //deixando sempre jogador no top
-    
+    let velocidade=10
     if (IdPlayer) {
         game.world.bringToTop(IdPlayer.jogador);
         //fisica em contato com a sala
@@ -206,24 +208,24 @@ Game.update = function () {
             //console.log("PLayer: "+IdPlayer.game.id);
             //  Move to the left
             // console.log("Antes: \n X:"+   Game.playerMap[IdPlayer].x + " e Y:" +Game.playerMap[IdPlayer].y)
-            Client.sendMove(-1, 0);
+            Client.sendMove(-velocidade, 0);
 
         }
         else if (cursors.right.isDown) {
             //  console.log("Tentando andar R");
             //  Move to the left
-            Client.sendMove(1, 0);
+            Client.sendMove(velocidade, 0);
         }
         else if (cursors.up.isDown) {
             //    console.log("Tentando andar UP");
             //  Move to the right
-            Client.sendMove(0, -1);
+            Client.sendMove(0, -velocidade);
 
 
         } else if (cursors.down.isDown) {
             //   console.log("Tentando andar D");
             //  Move to the right
-            Client.sendMove(0, 1);
+            Client.sendMove(0, velocidade);
         }
         else {
             Client.sendMove(0, 0);
