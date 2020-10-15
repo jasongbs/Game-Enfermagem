@@ -1,0 +1,20 @@
+[
+    {
+        "pergunta": 1,
+        "enunciado": "Dor de Barriga, oque fazer?",
+        "respostas": [
+            "Mandar paciente beber água",
+            "Dar laxante para o paciente",
+            "Mandar ele catar coquinho"
+        ]
+    },
+    {
+        "pergunta": 2,
+        "enunciado": "Diarreia, oque fazer?",
+        "respostas": [
+            "Mandar paciente beber água",
+            "Dar laxante para o paciente",
+            "Mandar ele comer cimento para endurecer o dejeto"
+        ]
+    }
+]

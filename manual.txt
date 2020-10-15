@@ -1,0 +1,10 @@
+Socket.emite() envia uma mensagem para um soquete específico.
+Aqui, enviamos ao cliente recém-conectado uma mensagem rotulada de "allplayers",
+ e como um segundo argumento, a saída do Client.getAllPlayers() que será uma matriz dos jogadores conectados atualmente.
+ Isso permite que os jogadores recém-conectados se compõem à quantidade e posições dos jogadores já conectados.
+
+ O socket.emite.broadcast() envia uma mensagem para todos os soquetes conectados, 
+ exceto o soquete que acionou o retorno de chamada. 
+ Permite transmitir eventos de um cliente para todos os outros clientes sem ecoá-los de volta ao cliente iniciante.
+
+ 
