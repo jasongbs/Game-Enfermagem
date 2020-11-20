@@ -4,7 +4,7 @@ var OBJbutton = [], objPortas = [], objPerguntas = [], kill = [], Mensagem = [];
 var cena, prachetas, panfletos, barreiras, objetosInterativos,contatoAtual, Fase = 0, andar = true, spriteFase = Fase - 1,FasePerdeu=7, acao,posicao="R", operacao = 'Load';
 
 function preload() {
-    game.load.audio('audio', 'audio/saber_quem_sou.mp3');
+    //game.load.audio('audio', 'audio/saber_quem_sou.mp3');
 
     $.getJSON("json/fase.json", function (data) {
         $.each(data, function (key, val) {
@@ -98,8 +98,8 @@ function create() {
         case "Load":
             game.stage.disableVisibilityChange = true;
             operacao = 'MenuPrincipal';
-            music = game.add.audio('audio');
-            music.play();
+           // music = game.add.audio('audio');
+           // music.play();
 
         case "MenuPrincipal":
             CenaMenu = game.add.sprite(0, 0, 'MenuPrincipal');
