@@ -1,0 +1,388 @@
+[
+    {
+        "Fase": "Fase 1",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1200,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 1850,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 2100,
+                "y": 193.5
+            }
+        ],"prancheta":
+        {
+            "x":1000,
+            "y":340
+        },"spawn":
+        {
+            "x":10,
+            "y":340
+        },
+        "objetosInterativos":[
+        {
+            "x":320 ,
+            "y":110,
+            "imagem":"Recepicionista01",
+            "mensagemVisivel":true,
+            "balaoX": 590,
+            "balaoY":125,
+            "mensagem": "Ola! Seja bem vindo.\n  Devido a pandemia \n        use mascara",
+            "colisao": true,
+            "balao":"BalãoFalaL" 
+        }]
+    },
+    {
+        "Fase": "Fase 2",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 200,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 550,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 900,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":1150,
+            "y":340
+        },
+        "spawn":
+        {
+            "x":10,
+            "y":340
+        },
+        "barreira":
+        [
+        {
+            "x":2140 ,
+            "y":500
+        }],
+        "objetosInterativos":[
+        {
+            "x":2135 ,
+            "y":250,
+            "imagem":"Atendimento01",
+            "mensagemVisivel":true,
+            "balaoX":2000 ,
+            "balaoY":125,
+            "lado":"left",
+            "mensagem": "Olha que lindo!\n  É um menino!",
+            "colisao": true,
+            "balao":"BalãoFalaR" 
+        }]
+    },
+    {
+        "Fase": "Fase 3",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1100,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 1700,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 50,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":1500,
+            "y":340
+        },"spawn":
+        {
+            "x":2790,
+            "y":340
+        }
+    },
+    {
+        "Fase": "Fase 4",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1100,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 150,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 2000,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":1300,
+            "y":340
+        },
+        "spawn":
+        {
+            "x":10,
+            "y":340
+        },
+        "panfletos":[
+        { 
+            "id": "PanfletoIco1",
+            "x":1650,
+            "grande":"Panfleto1"
+            
+        }],
+       
+        "objetosInterativos":[
+            {
+                "x":320 ,
+                "y":110,
+                "imagem":"Recepicionista02",
+                "mensagemVisivel":true,
+                "balaoX": 590,
+                "balaoY":125,
+                "mensagem": "      Como está\n  movimentado hoje!",
+                "colisao": false,
+                "balao":"BalãoFalaL" 
+            }]
+    },
+    {
+        "Fase": "Fase 5",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1100,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 1700,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 2100,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":1000,
+            "y":340
+        },
+        "spawn":
+        {
+            "x":2790,
+            "y":340
+        },
+        "barreira":
+        [
+        {
+            "x":381 ,
+            "y":500
+        }
+    ]
+    },
+    {
+        "Fase": "Fase 6",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1100,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 300,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 2000,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":1000,
+            "y":340
+        },
+        "spawn":
+        {
+            "x":10,
+            "y":340
+        },
+        "panfletos":[
+        { 
+            "id": "PanfletoIco2",
+            "x":1600,
+            "grande":"Panfleto2"
+            
+        }],
+       
+        "objetosInterativos":[
+            {
+                "x":425 ,
+                "y":290 ,
+                "imagem":"cadeirante",
+                "mensagemVisivel":true,
+                "balaoX": 620,
+                "balaoY":200,
+                "mensagem": "\nVocês são muito bons!",
+                "colisao": false,
+                "balao":"BalãoFalaL" 
+            }]
+
+    },
+    {
+        "Fase": "Venceu!! (6)",
+        "portas": [
+                        {
+                "resposta": "A",
+                "x": 2000,
+                "y": 252
+            }
+        ],
+        "spawn":
+        {
+            "x":10,
+            "y":340
+        },
+       
+        "objetosInterativos":[
+            {
+                "x":450 ,
+                "y":250 ,
+                "imagem":"Enfermeiro",
+                "mensagemVisivel":true,
+                "balaoX": 600,
+                "balaoY":125,
+                "mensagem": "\nParabéns!! Você chegou ao Final!!\nConseguindo vencer todos os problemas!",
+                "colisao": false,
+                "balao":"BalãoFalaL" 
+            }]
+
+    },
+    {
+        "Fase": "Perdeu (7)",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1200,
+                "y": 193.5
+               
+            }
+        ],
+        "spawn":
+        {
+            "x":10,
+            "y":340
+        },
+       
+        "objetosInterativos":[
+            {
+                "x":450 ,
+                "y":250 ,
+                "imagem":"Atendimento02",
+                "mensagemVisivel":true,
+                "balaoX": 600,
+                "balaoY":125,
+                "mensagem": "\n         Infelizmente está errado,\n         preste a atenção para não\n         prejudicar seu paciente.",
+                "colisao": false,
+                "balao":"BalãoFalaL" 
+            }]
+
+    
+    },
+    {
+        "Fase": "Fase 9",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1100,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 100,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 600,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":400,
+            "y":340
+        },
+        "spawn":
+        {
+            "x":10,
+            "y":340
+        }
+    },
+    {
+        "Fase": "Fase 10",
+        "portas": [
+            {
+                "resposta": "A",
+                "x": 1100,
+                "y": 193.5
+               
+            },
+            {
+                "resposta": "B",
+                "x": 100,
+                "y": 193.5
+            },
+            {
+                "resposta": "C",
+                "x": 2000,
+                "y": 193.5
+            }
+        ],
+        "prancheta":
+        {
+            "x":1500,
+            "y":340
+        },
+        "spawn":
+        {
+            "x":2790,
+            "y":340
+        }
+    }
+    
+]
+    
