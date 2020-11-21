@@ -3,7 +3,7 @@ var game = new Phaser.Game(1200, 600, Phaser.CANVAS, '', { preload: preload, cre
 var OBJbutton = [], objPortas = [], objPerguntas = [], kill = [], Mensagem = [];
 var cena, pranchetas, panfletos, barreiras, objetosInterativos, contatoAtual, Fase = 0, andar = true, spriteFase = Fase - 1, FasePerdeu = 7, acao, posicao = "R", operacao = 'Load';
 var text;
-var button;
+var button,precionado,mobileEsquerda;
 
 
 
@@ -111,10 +111,8 @@ function create() {
 
 
             if (isMobile()){
-                 game.add.button(20, 20, "btnComoJogar", function(){
-                    player.body.velocity.x += 150;
-                    player.animations.play('right');} 
-                    , this);
+                 mobileEsquerda=game.add.button(20, 20, "btnComoJogar",down, this);
+                mobileEsquerda.onInputUp.add(up, this);
                 //game.add.button(1200, 20, "btnComoJogar", ClickBtnComoJoga, this);
             }
 
@@ -158,6 +156,16 @@ function create() {
     }
 
 }
+function up() {
+    precionado= "stop"
+}
+
+function down(){
+    console.log("Esquerdaaa")
+    precionado= "left"
+} 
+      
+
 
 function DesenharSala(faseAtual) {
 
@@ -421,6 +429,7 @@ function acaoObjeto(player, objeto) {
 
 
 function jogo() {
+    console.log(precionado);
     let velocidade = 250;
     if (andar)
         game.world.bringToTop(player);
@@ -437,7 +446,7 @@ function jogo() {
 
     }
 
-    if (cursors.left.isDown && andar) {
+    if ((cursors.left.isDown && andar)|| precionado=="left") {
 
         player.body.velocity.x = -velocidade;
         player.animations.play('left');
