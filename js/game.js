@@ -5,6 +5,8 @@ var cena, pranchetas, panfletos, barreiras, objetosInterativos, contatoAtual, Fa
 var text;
 var button;
 
+
+
 function preload() {
 
 }
@@ -73,6 +75,14 @@ function loadComplete() {
     create();
 }
 
+
+function isMobile()
+{
+	var userAgent = navigator.userAgent.toLowerCase();
+	if( userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i)!= -1 )
+		return true;
+}
+
 function create() {
 
     switch (operacao) {
@@ -98,6 +108,16 @@ function create() {
 
             cursors = game.input.keyboard.createCursorKeys();
             game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
+
+
+            if (isMobile()){
+                 game.add.button(20, 20, "btnComoJogar", function(){
+                    player.body.velocity.x += 150;
+                    player.animations.play('right');} 
+                    , this);
+                //game.add.button(1200, 20, "btnComoJogar", ClickBtnComoJoga, this);
+            }
+
             break;
 
         case "MenuComoJogar":
