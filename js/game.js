@@ -4,37 +4,8 @@ var OBJbutton = [], objPortas = [], objPerguntas = [], kill = [], Mensagem = [];
 var cena, prachetas, panfletos, barreiras, objetosInterativos,contatoAtual, Fase = 0, andar = true, spriteFase = Fase - 1,FasePerdeu=7, acao,posicao="R", operacao = 'Load';
 
 function preload() {
-    game.load.spritesheet('button', 'img/btnJogar.png');
-    
-    /*
-while(sair){
-    var image = game.cache.checkImageKey('MenuPrincipal');
-    var image = game.cache.checkImageKey('BalãoFalaR');
-    var image = game.cache.checkImageKey('BalãoFalaL');
-    var image = game.cache.checkImageKey('MenuComoJogar');
-    var image = game.cache.checkImageKey('cadeirante');
-    var image = game.cache.checkImageKey('Enfermeiro');
-    var image = game.cache.checkImageKey('Atendimento01');
-    var image = game.cache.checkImageKey('Atendimento02');
-    var image = game.cache.checkImageKey('Recepicionista01');
-    var image = game.cache.checkImageKey('Recepicionista02');
-    var image = game.cache.checkImageKey('btnComoJogar');
-    var image = game.cache.checkImageKey('btnJogar');
-    var image = game.cache.checkImageKey('Panfleto1');
-    var image = game.cache.checkImageKey('PanfletoIco1');
-    var image = game.cache.checkImageKey('Panfleto2');
-    var image = game.cache.checkImageKey('PanfletoIco2');
-    var image = game.cache.checkImageKey('btnSobre');
-    var image = game.cache.checkImageKey('BtnVoltarMenu');
-    var image = game.cache.checkImageKey('Barreira');
-    var image = game.cache.checkImageKey('porta');
-    var image = game.cache.checkImageKey('prancheta');
-    var image = game.cache.checkImageKey('BotaoSair');
-    var image = game.cache.checkImageKey('BotãoConfirmar');
-    var image = game.cache.checkImageKey('resposta');
-    var audio = game.cache.checkSoundKey('audio');
-}
-*/
+     
+
 }
 
 var text;
@@ -44,15 +15,7 @@ var y = 80;
 
 function start() {
 
-    game.load.image('picture1', 'assets/pics/mighty_no_09_cover_art_by_robduenas.jpg');
-    game.load.image('picture2', 'assets/pics/cougar_dragonsun.png');
-    game.load.image('picture3', 'assets/pics/trsipic1_lazur.jpg');
-    game.load.image('picture4', 'assets/pics/archmage_in_your_face.png');
-    game.load.image('picture5', 'assets/pics/acryl_bladerunner.png');
-    game.load.image('picture6', 'assets/pics/acryl_bobablast.png');
-    game.load.image('picture7', 'assets/pics/alex-bisleys_horsy_5.png');
 
-    game.load.start();
     game.load.audio('audio', 'audio/saber_quem_sou.mp3');
 
     $.getJSON("json/fase.json", function (data) {
@@ -101,27 +64,28 @@ function start() {
 
     game.load.start();
 
-    button.visible = false;
-
 
 }
 
 function loadStart() {
 
-	text.setText("Loading ...");
+	text.setText("Carregando ....");
 
 }
 function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 
-	text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+	text.setText("Arquivos Completos: " + progress + "% - " + totalLoaded + " de " + totalFiles);
 
 }
 
 function loadComplete() {
 
-	text.setText("Load Complete");
+    text.setText("Carreamento Completo");
+    game.stage.disableVisibilityChange = true;
+    music = game.add.audio('audio');
+    music.play();
     operacao="MenuPrincipal";
-    create()
+    create();
 }
 
 function create() {
@@ -174,16 +138,14 @@ function create() {
             game.load.onLoadComplete.add(loadComplete, this);
         
             //	Just to kick things off
-            button = game.add.button(game.world.centerX - 95, 400, 'button', start, this, 2, 1, 0);
+            
         
             //	Progress report
-            text = game.add.text(32, 32, 'Click to start load', { fill: '#ffffff' });
+            text = game.add.text(250, 300, 'Prestes a carregar o jogo', { fill: '#ffffff' });
         
 
-            game.stage.disableVisibilityChange = true;
-            operacao = 'Load';
-            music = game.add.audio('audio');
-            music.play();
+          
+            start();
             break;
 
         case "MenuPrincipal":
