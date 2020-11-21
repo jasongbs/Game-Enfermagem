@@ -35,8 +35,7 @@
             "mensagemVisivel":true,
             "balaoX": 590,
             "balaoY":125,
-            "mensagem": "Ola! Seja bem vindo.\n  Devido a pandemia \n        use mascara",
-            "colisao": true,
+            "mensagem": "  Olá! Seja bem vinda.\n    Devido a pandemia \n         use mascara",
             "balao":"BalãoFalaL" 
         }]
     },

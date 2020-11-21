@@ -1,11 +1,11 @@
 [
     {
         "pergunta": 1,
-        "enunciado": "O diagnóstico de enfermagem que compõem a Sistematização da Assistência de Enfermagem\n (SAE) é subdividido em 4 classificações.Correlacione as classificações do diagnóstico com a\n respectiva definição e escolha o caminho da resposta correta.\n\nI-Bem-estar    II-Risco   III-Real   IV-Síndrome  \nA-Conjunto de diagnósticos de enfermagem vigentes ou de alto risco. \nB-Sustentado por características definidoras (manifestações, sinais e sintomas) que se agrupam \nem padrões de sugestões ou inferências relacionadas.\nC-Tem potencial aumento para melhora dos níveis de bem-estar.\nD-Sustentado por fatores de risco que contribuem para uma vulnerabilidade aumentada.\n",
+        "enunciado": "O diagnóstico de enfermagem que compõem a Sistematização da Assistência de Enfermagem\n (SAE) é subdividido em 4 classificações. Correlacione as classificações do diagnóstico com a\n respectiva definição e escolha o caminho da resposta correta.\n\nI-Bem-estar    II-Risco   III-Real   IV-Síndrome  \nA-Conjunto de diagnósticos de enfermagem vigentes ou de alto risco. \nB-Sustentado por características definidoras (manifestações, sinais e sintomas) que se agrupam \nem padrões de sugestões ou inferências relacionadas.\nC-Tem potencial aumento para melhora dos níveis de bem-estar.\nD-Sustentado por fatores de risco que contribuem para uma vulnerabilidade aumentada.\n",
         "respostas": [
-            "I-A, II-C, III-D, IV-B",
-            "I-C, II-D, III-B, IV-A",
-            "I-B, II-A, III-C, IV-D"
+            " I-A\n II-C\n III-D\n IV-B",
+            " I-C\n II-D\n III-B\n IV-A",
+            " I-B\n II-A\n III-C\n IV-D"
           
         ],
         "respostaCorreta":"B"
@@ -15,7 +15,7 @@
         "enunciado": "O diagnóstico de enfermagem está incluso no Processo de Enfermagem. Esse processo, é dividido\n em 5 etapas.Escolha o caminho no qual essas etapas estão na ordem correta para se ter\n uma assistência efetiva.",
         "respostas": [
             "Planejamento, avaliação, coleta de dados, \ndiagnóstico e implementação",
-            "Coleta de dados, diagnóstico, planejamento, \nimplementaçãn e avaliação",
+            "Coleta de dados, diagnóstico, planejamento, \nimplementação e avaliação",
             "Coleta de dados, planejamento, diagnóstico, \nimplementação e avaliação"
         ],
         "respostaCorreta":"B"
@@ -24,7 +24,7 @@
         "enunciado": "O diagnóstico de Proteção Ineficaz tem a seguinte definição: \nDiminuição na capacidade de se proteger de ameaças internas e externas, como doenças ou lesões.\nDe acordo com essa definição, qual a população em risco desse diagnóstico?",
         "respostas": [
             "População de Jovens",
-            "População de Jovens Extremos de Idade",
+            "População de Extremos de Idade",
             "População de Gestantes"
         ],
         "respostaCorreta":"B"
@@ -44,7 +44,7 @@
         "respostas": [
             "Hipotensão, Sepse e Hipóxia.",
             "Hipertensão, Tabagismo e obesidade.",
-            "Hipertensão, Tabagismo e obesidade."
+            "Tabagismo, Dispneia e Doença crônica."
         ],
         "respostaCorreta":"A"
     },
