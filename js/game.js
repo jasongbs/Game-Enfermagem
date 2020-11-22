@@ -285,7 +285,7 @@ function lendoPrancheta(player, prancheta) {
         var pranchetaGrande = game.add.sprite(posicaoX - 500, 0, 'pranchetaView');
         var style = { font: "20px ", fill: "black" };
         texto = objPerguntas[Fase].enunciado;
-        texto = game.add.text(posicaoX - 430, 190, texto, style);
+        texto = game.add.text(posicaoX - 430, 185, texto, style);
         button = game.add.button(posicaoX - 410, 500, "BotaoSair", ClickSair, this);
         kill.push(texto);
         kill.push(pranchetaGrande);
