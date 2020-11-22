@@ -5,8 +5,6 @@ var cena, pranchetas, panfletos, barreiras, objetosInterativos, contatoAtual, Fa
 var text;
 var button,precionado,mobileEsquerda;
 
-
-
 function preload() {
 
 }
@@ -28,6 +26,9 @@ function start() {
 
     cena = game.load.spritesheet('Cena1', 'img/Cenas1-2-3-4-5.png', 2401, 600);
     cena2 = game.load.spritesheet('Cena2', 'img/Cenas6-7-8-9-10.png', 2400, 600);
+    game.load.image('BMSelecionar', 'img/BMSelecionar.png');
+    game.load.image('BMLeft', 'img/BMLeft.png');
+    game.load.image('BMRight', 'img/BMRight.png');
     game.load.image('MenuPrincipal', 'img/MenuPrincipal.png');
     game.load.image('BalãoFalaR', 'img/BalãoFalaR.png');
     game.load.image('BalãoFalaL', 'img/BalãoFalaL.png');
@@ -75,7 +76,6 @@ function loadComplete() {
     create();
 }
 
-
 function isMobile()
 {
 	var userAgent = navigator.userAgent.toLowerCase();
@@ -109,13 +109,27 @@ function create() {
             cursors = game.input.keyboard.createCursorKeys();
             game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 
-
             if (isMobile()){
-                 mobileEsquerda=game.add.button(20, 20, "btnComoJogar",down, this);
+                mobileEsquerda=game.add.button(20, 20, "BMLeft",down, this);
+                mobileEsquerda.onInputDown.add(down, this);
                 mobileEsquerda.onInputUp.add(up, this);
-                //game.add.button(1200, 20, "btnComoJogar", ClickBtnComoJoga, this);
+                mobileEsquerda.fixedToCamera = true;
+                mobileEsquerda.sentido = "left";
+
+                mobileDireita=game.add.button(1100, 20, "BMRight",down, this);
+                mobileDireita.onInputDown.add(down, this);
+                mobileDireita.onInputUp.add(up, this);
+                mobileDireita.fixedToCamera = true;
+                mobileDireita.sentido = "right";
+
+                mobileDireita=game.add.button(500, 20, "BMSelecionar",down, this);
+                mobileDireita.onInputDown.add(down, this);
+                mobileDireita.onInputUp.add(up, this);
+                mobileDireita.fixedToCamera = true;
+                mobileDireita.sentido = "selecionar";
             }
 
+            
             break;
 
         case "MenuComoJogar":
@@ -132,14 +146,10 @@ function create() {
 
         case "Load":
             game.stage.backgroundColor = 'rgb(30, 30, 32)';
-
-  
             game.load.onLoadStart.add(loadStart, this);
             game.load.onFileComplete.add(fileComplete, this);
             game.load.onLoadComplete.add(loadComplete, this);
-
             text = game.add.text(350, 300, 'Prestes a carregar o jogo', { fill: '#ffffff' });
-
             start();
             break;
 
@@ -157,12 +167,11 @@ function create() {
 
 }
 function up() {
-    precionado= "stop"
+    precionado= "stop";
 }
 
-function down(){
-    console.log("Esquerdaaa")
-    precionado= "left"
+function down(botao){
+    precionado=botao.sentido;
 } 
       
 
@@ -248,7 +257,7 @@ function respondendo(player, porta) {
 
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    if (this.spaceKey.isDown) {
+    if (this.spaceKey.isDown|| precionado=="selecionar") {
         if (objPerguntas[Fase].respostaCorreta === porta.resposta) {
             lendoResposta(player, porta, true);
         }
@@ -265,7 +274,7 @@ function spawnPlayer(player, porta) {
 
 function lendoPrancheta(player, prancheta) {
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    if (this.spaceKey.isDown) {
+    if (this.spaceKey.isDown|| precionado=="selecionar") {
         var posicaoX;
         andar = false;
         let texto;
@@ -284,11 +293,9 @@ function lendoPrancheta(player, prancheta) {
     }
 }
 
-
 function lendoPanfletos(player, panfleto) {
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
-    if (this.spaceKey.isDown) {
+    if (this.spaceKey.isDown || precionado=="selecionar") {
         let posicaoX;
         andar = false;
         if (player.x > 500)
@@ -429,7 +436,7 @@ function acaoObjeto(player, objeto) {
 
 
 function jogo() {
-    console.log(precionado);
+
     let velocidade = 250;
     if (andar)
         game.world.bringToTop(player);
@@ -445,7 +452,6 @@ function jogo() {
         Mensagem.forEach(function (item) { item.kill(); });
 
     }
-
     if ((cursors.left.isDown && andar)|| precionado=="left") {
 
         player.body.velocity.x = -velocidade;
@@ -453,7 +459,7 @@ function jogo() {
         posicao = "L"
 
     }
-    else if (cursors.right.isDown && andar) {
+    else if ((cursors.right.isDown && andar)|| precionado=="right") {
 
         player.body.velocity.x = velocidade;
         player.animations.play('right');
