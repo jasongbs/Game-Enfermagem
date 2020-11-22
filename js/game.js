@@ -3,7 +3,7 @@ var game = new Phaser.Game(1200, 600, Phaser.CANVAS, '', { preload: preload, cre
 var OBJbutton = [], objPortas = [], objPerguntas = [], kill = [], Mensagem = [];
 var cena, pranchetas, panfletos, barreiras, objetosInterativos, contatoAtual, Fase = 0, andar = true, spriteFase = Fase - 1, FasePerdeu = 7, acao, posicao = "R", operacao = 'Load';
 var text;
-var button,precionado,mobileEsquerda;
+var button, precionado, mobileEsquerda;
 
 function preload() {
 
@@ -76,11 +76,10 @@ function loadComplete() {
     create();
 }
 
-function isMobile()
-{
-	var userAgent = navigator.userAgent.toLowerCase();
-	if( userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i)!= -1 )
-		return true;
+function isMobile() {
+    var userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.search(/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i) != -1)
+        return true;
 }
 
 function create() {
@@ -90,7 +89,7 @@ function create() {
         case "jogo":
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
-            DesenharSala(Fase)
+            DesenharSala(Fase);
 
             game.world.setBounds(0, 0, 2403, 600);
 
@@ -109,27 +108,8 @@ function create() {
             cursors = game.input.keyboard.createCursorKeys();
             game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
 
-            if (isMobile()){
-                mobileEsquerda=game.add.button(20, 20, "BMLeft",down, this);
-                mobileEsquerda.onInputDown.add(down, this);
-                mobileEsquerda.onInputUp.add(up, this);
-                mobileEsquerda.fixedToCamera = true;
-                mobileEsquerda.sentido = "left";
+            controlesMobile();
 
-                mobileDireita=game.add.button(1100, 20, "BMRight",down, this);
-                mobileDireita.onInputDown.add(down, this);
-                mobileDireita.onInputUp.add(up, this);
-                mobileDireita.fixedToCamera = true;
-                mobileDireita.sentido = "right";
-
-                mobileDireita=game.add.button(500, 20, "BMSelecionar",down, this);
-                mobileDireita.onInputDown.add(down, this);
-                mobileDireita.onInputUp.add(up, this);
-                mobileDireita.fixedToCamera = true;
-                mobileDireita.sentido = "selecionar";
-            }
-
-            
             break;
 
         case "MenuComoJogar":
@@ -166,18 +146,43 @@ function create() {
     }
 
 }
-function up() {
-    precionado= "stop";
+
+function controlesMobile() {
+
+    if (isMobile()) {
+        mobileEsquerda = game.add.button(20, 20, "BMLeft", down, this);
+        mobileEsquerda.onInputDown.add(down, this);
+        mobileEsquerda.onInputUp.add(up, this);
+        mobileEsquerda.fixedToCamera = true;
+        mobileEsquerda.sentido = "left";
+
+        mobileDireita = game.add.button(1100, 20, "BMRight", down, this);
+        mobileDireita.onInputDown.add(down, this);
+        mobileDireita.onInputUp.add(up, this);
+        mobileDireita.fixedToCamera = true;
+        mobileDireita.sentido = "right";
+
+        mobileDireita = game.add.button(500, 20, "BMSelecionar", down, this);
+        mobileDireita.onInputDown.add(down, this);
+        mobileDireita.onInputUp.add(up, this);
+        mobileDireita.fixedToCamera = true;
+        mobileDireita.sentido = "selecionar";
+    }
+
 }
 
-function down(botao){
-    precionado=botao.sentido;
-} 
-      
+function up() {
+    precionado = "stop";
+}
+
+function down(botao) {
+    precionado = botao.sentido;
+}
+
 
 
 function DesenharSala(faseAtual) {
-
+    controlesMobile();
     if (faseAtual <= 4) {
         spriteFase++;
         cena = game.add.sprite(0, 0, 'Cena1');
@@ -257,7 +262,7 @@ function respondendo(player, porta) {
 
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-    if (this.spaceKey.isDown|| precionado=="selecionar") {
+    if (this.spaceKey.isDown || precionado == "selecionar") {
         if (objPerguntas[Fase].respostaCorreta === porta.resposta) {
             lendoResposta(player, porta, true);
         }
@@ -274,7 +279,7 @@ function spawnPlayer(player, porta) {
 
 function lendoPrancheta(player, prancheta) {
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    if (this.spaceKey.isDown|| precionado=="selecionar") {
+    if (this.spaceKey.isDown || precionado == "selecionar") {
         var posicaoX;
         andar = false;
         let texto;
@@ -283,9 +288,9 @@ function lendoPrancheta(player, prancheta) {
         else
             posicaoX = 500;
         var pranchetaGrande = game.add.sprite(posicaoX - 500, 0, 'pranchetaView');
-        if (isMobile()){
-        var style = { font: "18px ", fill: "black" };
-        }else{
+        if (isMobile()) {
+            var style = { font: "18px ", fill: "black" };
+        } else {
             var style = { font: "20px ", fill: "black" };
         }
         texto = objPerguntas[Fase].enunciado;
@@ -299,7 +304,7 @@ function lendoPrancheta(player, prancheta) {
 
 function lendoPanfletos(player, panfleto) {
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    if (this.spaceKey.isDown || precionado=="selecionar") {
+    if (this.spaceKey.isDown || precionado == "selecionar") {
         let posicaoX;
         andar = false;
         if (player.x > 500)
@@ -456,14 +461,14 @@ function jogo() {
         Mensagem.forEach(function (item) { item.kill(); });
 
     }
-    if ((cursors.left.isDown && andar)|| precionado=="left") {
+    if ((cursors.left.isDown && andar) || precionado == "left") {
 
         player.body.velocity.x = -velocidade;
         player.animations.play('left');
         posicao = "L"
 
     }
-    else if ((cursors.right.isDown && andar)|| precionado=="right") {
+    else if ((cursors.right.isDown && andar) || precionado == "right") {
 
         player.body.velocity.x = velocidade;
         player.animations.play('right');
