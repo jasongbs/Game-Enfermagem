@@ -109,6 +109,13 @@
                 "y": 193.5
             }
         ],
+        "panfletos":[
+        { 
+            "id": "PanfletoIco3",
+            "x":495,
+            "grande":"Panfleto3"
+            
+        }],
         "prancheta":
         {
             "x":1500,
@@ -141,7 +148,7 @@
         ],
         "prancheta":
         {
-            "x":1300,
+            "x":1350,
             "y":340
         },
         "spawn":
@@ -152,7 +159,7 @@
         "panfletos":[
         { 
             "id": "PanfletoIco1",
-            "x":1650,
+            "x":1600,
             "grande":"Panfleto1"
             
         }],
@@ -206,7 +213,14 @@
             "x":381 ,
             "y":500
         }
-    ]
+        ],
+        "panfletos":[
+        { 
+            "id": "PanfletoIco4",
+            "x":1950,
+            "grande":"Panfleto4"
+            
+        }]
     },
     {
         "Fase": "Fase 6",

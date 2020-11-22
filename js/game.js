@@ -1,6 +1,6 @@
 var game = new Phaser.Game(1200, 600, Phaser.CANVAS, '', { preload: preload, create: create, update: update });
 
-var OBJbutton = [], objPortas = [], objPerguntas = [], kill = [], Mensagem = [];
+var OBJbutton = [], objFases = [], objPerguntas = [], kill = [], Mensagem = [];
 var cena, pranchetas, panfletos, barreiras, objetosInterativos, contatoAtual, Fase = 0, andar = true, spriteFase = Fase - 1, FasePerdeu = 7, acao, posicao = "R", operacao = 'Load';
 var text;
 var button,precionado,mobileEsquerda, mobileSelecionar, mobileDireita;
@@ -14,7 +14,7 @@ function start() {
 
     $.getJSON("json/fase.json", function (data) {
         $.each(data, function (key, val) {
-            objPortas.push(val);
+            objFases.push(val);
         })
     });
 
@@ -46,6 +46,10 @@ function start() {
     game.load.image('PanfletoIco1', 'img/PanfletoIco1.png');
     game.load.image('Panfleto2', 'img/Panfleto2.png');
     game.load.image('PanfletoIco2', 'img/PanfletoIco2.png');
+    game.load.image('Panfleto3', 'img/Panfleto3.png');
+    game.load.image('PanfletoIco3', 'img/PanfletoIco3.png');
+    game.load.image('Panfleto4', 'img/Panfleto4.png');
+    game.load.image('PanfletoIco4', 'img/PanfletoIco4.png');
     game.load.image('btnSobre', 'img/btnSobre.png');
     game.load.image('BtnVoltarMenu', 'img/BtnVoltarMenu.png');
     game.load.image('Barreira', 'img/Barreira.png');
@@ -210,53 +214,53 @@ function DesenharSala(faseAtual) {
     if (faseAtual != 6 && faseAtual != FasePerdeu) {
         pranchetas = game.add.group();
         pranchetas.enableBody = true;
-        var prancheta = pranchetas.create(objPortas[faseAtual].prancheta.x, objPortas[faseAtual].prancheta.y, 'prancheta');
+        var prancheta = pranchetas.create(objFases[faseAtual].prancheta.x, objFases[faseAtual].prancheta.y, 'prancheta');
         prancheta.body.immovable = true;
     }
 
-    for (let position in objPortas[faseAtual].panfletos) {
+    for (let position in objFases[faseAtual].panfletos) {
         panfletos = game.add.group();
         panfletos.enableBody = true;
-        var panfleto = panfletos.create(objPortas[faseAtual].panfletos[position].x, 340, objPortas[faseAtual].panfletos[position].id);
+        var panfleto = panfletos.create(objFases[faseAtual].panfletos[position].x, 340, objFases[faseAtual].panfletos[position].id);
         panfleto.body.immovable = true;
-        panfleto.panfleto = objPortas[faseAtual].panfletos[position].grande;
+        panfleto.panfleto = objFases[faseAtual].panfletos[position].grande;
     }
 
     portas = game.add.group();
     portas.enableBody = true;
 
-    for (let position in objPortas[faseAtual].portas) {
-        var porta = portas.create(objPortas[faseAtual].portas[position].x, objPortas[faseAtual].portas[position].y, 'porta');
+    for (let position in objFases[faseAtual].portas) {
+        var porta = portas.create(objFases[faseAtual].portas[position].x, objFases[faseAtual].portas[position].y, 'porta');
         porta.body.immovable = true;
-        porta.resposta = objPortas[faseAtual].portas[position].resposta
+        porta.resposta = objFases[faseAtual].portas[position].resposta
         if (faseAtual == 6)
             porta.scale.setTo(1, 0.8);
 
     }
 
-    for (let position in objPortas[faseAtual].barreira) {
+    for (let position in objFases[faseAtual].barreira) {
         barreiras = game.add.group();
         barreiras.enableBody = true;
-        var barreira = barreiras.create(objPortas[faseAtual].barreira[position].x, 340, "Barreira");
+        var barreira = barreiras.create(objFases[faseAtual].barreira[position].x, 340, "Barreira");
         barreira.body.immovable = true;
 
     }
 
-    for (let position in objPortas[faseAtual].objetosInterativos) {
+    for (let position in objFases[faseAtual].objetosInterativos) {
 
         objetosInterativos = game.add.group();
         objetosInterativos.enableBody = true;
-        var objetosInterativo = objetosInterativos.create(objPortas[faseAtual].objetosInterativos[position].x, objPortas[faseAtual].objetosInterativos[position].y, objPortas[faseAtual].objetosInterativos[position].imagem);
+        var objetosInterativo = objetosInterativos.create(objFases[faseAtual].objetosInterativos[position].x, objFases[faseAtual].objetosInterativos[position].y, objFases[faseAtual].objetosInterativos[position].imagem);
         objetosInterativo.body.immovable = true;
-        objetosInterativo.mensagem = objPortas[faseAtual].objetosInterativos[position].mensagem;
-        objetosInterativo.balaoX = objPortas[faseAtual].objetosInterativos[position].balaoX;
-        objetosInterativo.balaoY = objPortas[faseAtual].objetosInterativos[position].balaoY;
-        objetosInterativo.mensagemVisivel = objPortas[faseAtual].objetosInterativos[position].mensagemVisivel;
-        objetosInterativo.balao = objPortas[faseAtual].objetosInterativos[position].balao;
+        objetosInterativo.mensagem = objFases[faseAtual].objetosInterativos[position].mensagem;
+        objetosInterativo.balaoX = objFases[faseAtual].objetosInterativos[position].balaoX;
+        objetosInterativo.balaoY = objFases[faseAtual].objetosInterativos[position].balaoY;
+        objetosInterativo.mensagemVisivel = objFases[faseAtual].objetosInterativos[position].mensagemVisivel;
+        objetosInterativo.balao = objFases[faseAtual].objetosInterativos[position].balao;
         objetosInterativo.id = position;
 
     }
-    player.x = objPortas[faseAtual].spawn.x;
+    player.x = objFases[faseAtual].spawn.x;
 }
 
 function respondendo(player, porta) {
@@ -313,9 +317,9 @@ function lendoPanfletos(player, panfleto) {
         else
             posicaoX = 500;
 
-        var panfletoGrande = game.add.sprite(posicaoX - 500, 0, panfleto.panfleto);
+        var panfletoGrande = game.add.sprite(posicaoX - 400, 0, panfleto.panfleto);
         //  Add and update the scor
-        button = game.add.button(posicaoX - (panfletoGrande.width / 2), panfletoGrande.height, "BotaoSair", ClickSair, this);
+        button = game.add.button(posicaoX - 400, panfletoGrande.height, "BotaoSair", ClickSair, this);
 
         kill.push(panfletoGrande);
         kill.push(button);
