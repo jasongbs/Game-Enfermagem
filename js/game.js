@@ -473,14 +473,14 @@ function jogo() {
         Mensagem.forEach(function (item) { item.kill(); });
 
     }
-    if ((cursors.left.isDown && andar)|| precionado=="left") {
+    if ((cursors.left.isDown || precionado=="left")&& andar) {
 
         player.body.velocity.x = -velocidade;
         player.animations.play('left');
         posicao = "L"
 
     }
-    else if ((cursors.right.isDown && andar)|| precionado=="right") {
+    else if ((cursors.right.isDown || precionado=="right") && andar) {
 
         player.body.velocity.x = velocidade;
         player.animations.play('right');
